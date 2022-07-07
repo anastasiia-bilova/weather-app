@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/style.css" />
+    <script
+      src="https://kit.fontawesome.com/46c373a5ee.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Wireframe</title>
+  </head>
+  <body>
+    <video
+      playsinline
+      autoplay
+      muted
+      loop
+      poster="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/037/303/original/mountain-valley.png?1655289599"
+      id="bgvid"
+    >
+      <source src="assets/mountain-valley.mp4" type="video/mp4" />
+    </video>
+    <div class="key-wrap">
+      <form id="search-form" autocomplete="off">
+        <div class="input-icons">
+          <i class="fa-solid fa-earth-americas fa-lg"></i>
+          <input
+            class="input-keyword"
+            id="search-input"
+            type="text"
+            placeholder="Enter a city"
+            aria-label="Search"
+          />
+          <button type="submit">Search</button>
+        </div>
+      </form>
+      <div class="cities-list">
+        <a href="#" class="city-link" id="current-city">Current city</a>
+        <a href="#" class="city-link" id="popular-city">Lisbon</a>
+        <a href="#" class="city-link" id="popular-city">Barcelona</a>
+        <a href="#" class="city-link" id="popular-city">Paris</a>
+        <a href="#" class="city-link" id="popular-city">London</a>
+        <a href="#" class="city-link" id="popular-city">Tokyo</a>
+      </div>
+    </div>
+    <div class="viewport-header">
+      <h1>
+        <!-- Japan -->
+        <span class="weather-city" id="city">Tokyo</span>
+      </h1>
+    </div>
+    <div class="parallax-weather">
+      <div>
+        <span class="parallax-temp-unit" id="current-date-time"></span>
+      </div>
+      <div>
+        <span class="parallax-temp" id="city-temperature">24</span>
+        <span class="units" id="temperature-type">
+          <a href="#" id="celsius-link">°C</a>
+          |
+          <a href="#" id="fahrenheit-link">°F</a>
+        </span>
+      </div>
+      <div>
+        <span class="parallax-weather-icon">⛅</span>
+        <span class="parallax-temp-unit" id="description">Few clouds</span>
+      </div>
+    </div>
+    <div class="top-overview-wrap">
+      <article class="day-forecast">
+        <p class="day-name">Sun 12</p>
+        <span class="day-weather-icon">🌧️</span>
+        <p class="day-temperature">25°</p>
+      </article>
+      <article class="day-forecast">
+        <p class="day-name">Mon 13</p>
+        <span class="day-weather-icon">🌤️</span>
+        <p class="day-temperature">27°</p>
+      </article>
+      <article class="day-forecast">
+        <p class="day-name">Tue 14</p>
+        <span class="day-weather-icon">☀️</span>
+        <p class="day-temperature">29°</p>
+      </article>
+      <article class="day-forecast">
+        <p class="day-name">Wed 15</p>
+        <span class="day-weather-icon">☀️</span>
+        <p class="day-temperature">32°</p>
+      </article>
+      <article class="day-forecast">
+        <p class="day-name">Thu 16</p>
+        <span class="day-weather-icon">🌤️</span>
+        <p class="day-temperature">28°</p>
+      </article>
+    </div>
+    <script src="src/app.js"></script>
+  </body>
+</html>
