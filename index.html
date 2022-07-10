@@ -4,98 +4,181 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="src/style.css" />
     <script
       src="https://kit.fontawesome.com/46c373a5ee.js"
       crossorigin="anonymous"
     ></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <title>Wireframe</title>
+    <title>☔️ Weather App</title>
   </head>
   <body>
-    <video
-      playsinline
-      autoplay
-      muted
-      loop
-      poster="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/037/303/original/mountain-valley.png?1655289599"
-      id="bgvid"
-    >
-      <source src="assets/mountain-valley.mp4" type="video/mp4" />
-    </video>
-    <div class="key-wrap">
-      <form id="search-form" autocomplete="off">
-        <div class="input-icons">
-          <i class="fa-solid fa-earth-americas fa-lg"></i>
-          <input
-            class="input-keyword"
-            id="search-input"
-            type="text"
-            placeholder="Enter a city"
-            aria-label="Search"
-          />
-          <button type="submit">Search</button>
+    <section>
+      <video
+        playsinline="playsinline"
+        autoplay="autoplay"
+        muted="muted"
+        loop="loop"
+        poster="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/037/303/original/mountain-valley.png?1655289599"
+      >
+        <source
+          src="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4"
+          type="video/mp4"
+        />
+      </video>
+
+      <div class="container h-100">
+        <div
+          class="row g-xl-0 g-lg-0 g-md-0 mt-xl-4 mt-lg-3 mt-md-3 mt-sm-3 mt-2 mx-0"
+        >
+          <div
+            class="col-xl-6 offset-xl-3 col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-12 col-xs-12"
+          >
+            <form class="input-group" id="search-form" autocomplete="off">
+              <!-- <i class="fa-solid fa-earth-americas fa-lg"></i> -->
+              <input
+                type="text"
+                class="form-control input-keyword"
+                id="search-input"
+                placeholder="Search for location"
+                aria-label="Recipient's username with two button addons"
+              />
+              <button class="btn btn-outline-light btn-search" type="submit">
+                Search
+              </button>
+              <button
+                class="btn btn-outline-light btn-location"
+                id="current-location"
+                type="button"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-geo-fill"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999zm2.493 8.574a.5.5 0 0 1-.411.575c-.712.118-1.28.295-1.655.493a1.319 1.319 0 0 0-.37.265.301.301 0 0 0-.057.09V14l.002.008a.147.147 0 0 0 .016.033.617.617 0 0 0 .145.15c.165.13.435.27.813.395.751.25 1.82.414 3.024.414s2.273-.163 3.024-.414c.378-.126.648-.265.813-.395a.619.619 0 0 0 .146-.15.148.148 0 0 0 .015-.033L12 14v-.004a.301.301 0 0 0-.057-.09 1.318 1.318 0 0 0-.37-.264c-.376-.198-.943-.375-1.655-.493a.5.5 0 1 1 .164-.986c.77.127 1.452.328 1.957.594C12.5 13 13 13.4 13 14c0 .426-.26.752-.544.977-.29.228-.68.413-1.116.558-.878.293-2.059.465-3.34.465-1.281 0-2.462-.172-3.34-.465-.436-.145-.826-.33-1.116-.558C3.26 14.752 3 14.426 3 14c0-.599.5-1 .961-1.243.505-.266 1.187-.467 1.957-.594a.5.5 0 0 1 .575.411z"
+                  ></path>
+                </svg>
+              </button>
+            </form>
+            <div class="cities-list">
+              <a href="#" class="city-link" id="popular-city">Lisbon</a>
+              <a href="#" class="city-link" id="popular-city">Barcelona</a>
+              <a href="#" class="city-link" id="popular-city">Paris</a>
+              <a href="#" class="city-link" id="popular-city">London</a>
+              <a href="#" class="city-link" id="popular-city">Tokyo</a>
+            </div>
+          </div>
         </div>
-      </form>
-      <div class="cities-list">
-        <a href="#" class="city-link" id="current-city">Current city</a>
-        <a href="#" class="city-link" id="popular-city">Lisbon</a>
-        <a href="#" class="city-link" id="popular-city">Barcelona</a>
-        <a href="#" class="city-link" id="popular-city">Paris</a>
-        <a href="#" class="city-link" id="popular-city">London</a>
-        <a href="#" class="city-link" id="popular-city">Tokyo</a>
+        <div class="d-flex flex-column text-center align-items-center">
+          <div class="w-100 text-white">
+            <p class="lead mb-0" id="current-time"></p>
+            <h1 class="display-1 mb-0" id="city">Salzburg</h1>
+            <h1 class="display-6 mt-0 mb-0" id="country">Austria</h1>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+            <div class="align-items-top g-2 p-2 row">
+              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                <span class="weather-icon">⛅</span>
+                <p class="text-white mb-0" id="weather-description">
+                  Partly Cloudy
+                </p>
+              </div>
+              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                <div class="float-left">
+                  <span class="temperature text-white" id="temperature"
+                    >20</span
+                  >
+                  <span class="units">
+                    <a href="#" class="text-white" id="celsius">°C</a>
+                    <span class="text-white">|</span>
+                    <a href="#" class="text-white" id="fahrenheit">°F</a>
+                  </span>
+                </div>
+                <div class="float-left">
+                  <p class="text-white">
+                    H:<span id="max-temperature">22</span> L:<span
+                      id="min-temperature"
+                      >18</span
+                    >
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="g-1 g-xl-3 g-lg-3 g-md-2 g-sm-2 mt-3 row row-cols-5">
+          <div
+            class="col-xl-2 offset-xl-1 col-lg-2 offset-lg-1 col-md-2 offset-md-1 col-sm-2 offset-sm-1 col-xs-0"
+          >
+            <div class="card text-center text-white">
+              <div class="card-body">
+                <h6 class="card-title day">Tue</h6>
+                <span class="forecast-icon">☀️</span>
+                <p class="card-text">22°</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xs-1">
+            <div class="card text-center text-white">
+              <div class="card-body">
+                <h6 class="card-title day">Wed</h6>
+                <span class="forecast-icon">🌧️</span>
+                <p class="card-text">18°</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xs-1">
+            <div class="card text-center text-white">
+              <div class="card-body">
+                <h6 class="card-title day">Thu</h6>
+                <span class="forecast-icon">☀️</span>
+                <p class="card-text">25°</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xs-1">
+            <div class="card text-center text-white">
+              <div class="card-body">
+                <h6 class="card-title day">Fri</h6>
+                <span class="forecast-icon">🌤️</span>
+                <p class="card-text">22°</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xs-1">
+            <div class="card text-center text-white">
+              <div class="card-body">
+                <h6 class="card-title day">Sat</h6>
+                <span class="forecast-icon">🌧️</span>
+                <p class="card-text">19°</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer text-white text-center">
+          <p>
+            <a
+              href="https://github.com/anastasiia-bilova/weather-app"
+              target="_blank"
+              class="signature-link"
+              >Open-source code</a
+            >, by Anastasiia Bilova
+          </p>
+        </div>
       </div>
-    </div>
-    <div class="viewport-header">
-      <h1>
-        <!-- Japan -->
-        <span class="weather-city" id="city">Tokyo</span>
-      </h1>
-    </div>
-    <div class="parallax-weather">
-      <div>
-        <span class="parallax-temp-unit" id="current-date-time"></span>
-      </div>
-      <div>
-        <span class="parallax-temp" id="city-temperature">24</span>
-        <span class="units" id="temperature-type">
-          <a href="#" id="celsius-link">°C</a>
-          |
-          <a href="#" id="fahrenheit-link">°F</a>
-        </span>
-      </div>
-      <div>
-        <span class="parallax-weather-icon">⛅</span>
-        <span class="parallax-temp-unit" id="description">Few clouds</span>
-      </div>
-    </div>
-    <div class="top-overview-wrap">
-      <article class="day-forecast">
-        <p class="day-name">Sun 12</p>
-        <span class="day-weather-icon">🌧️</span>
-        <p class="day-temperature">25°</p>
-      </article>
-      <article class="day-forecast">
-        <p class="day-name">Mon 13</p>
-        <span class="day-weather-icon">🌤️</span>
-        <p class="day-temperature">27°</p>
-      </article>
-      <article class="day-forecast">
-        <p class="day-name">Tue 14</p>
-        <span class="day-weather-icon">☀️</span>
-        <p class="day-temperature">29°</p>
-      </article>
-      <article class="day-forecast">
-        <p class="day-name">Wed 15</p>
-        <span class="day-weather-icon">☀️</span>
-        <p class="day-temperature">32°</p>
-      </article>
-      <article class="day-forecast">
-        <p class="day-name">Thu 16</p>
-        <span class="day-weather-icon">🌤️</span>
-        <p class="day-temperature">28°</p>
-      </article>
-    </div>
+    </section>
     <script src="src/app.js"></script>
   </body>
 </html>

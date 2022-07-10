@@ -10,53 +10,54 @@ let days = [
 
 let date = new Date();
 
-let currentDateTime = document.querySelector("#current-date-time");
+let currentTime = document.querySelector("#current-time");
 
 let currentDay = days[date.getDay()];
 let currentHour = date.getHours();
 let currentMinute = String(date.getMinutes()).padStart(2, "0");
 
-currentDateTime.innerHTML = `${currentDay} ${currentHour}:${currentMinute}`;
+currentTime.innerHTML = `${currentDay} ${currentHour}:${currentMinute}`;
 
 let apiKey = "8f82c6d344f9012fca0574b26e72d1f7";
 
 function showWeatherDescription(response) {
-  let heading = document.querySelector("#city");
+  let cityHeading = document.querySelector("#city");
 
   if (city) {
-    heading.innerHTML = response.data.name;
+    cityHeading.innerHTML = response.data.name;
   }
 
-  let cityTemperature = document.querySelector("#city-temperature");
-  let temperature = Math.round(response.data.main.temp);
-  cityTemperature.innerHTML = temperature;
+  celciusTemperature = Math.round(response.data.main.temp);
+  document.querySelector("#temperature").innerHTML = celciusTemperature;
+  document.querySelector("#weather-description").innerHTML =
+    response.data.weather[0].description;
 }
 
 let searchForm = document.querySelector("#search-form");
 
 searchForm.addEventListener("submit", function (event) {
   event.preventDefault();
-  let searchCityInput = document.querySelector("#search-input");
-  let city = searchCityInput.value;
+  let searchInput = document.querySelector("#search-input");
+  let city = searchInput.value;
 
   let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiURL).then(showWeatherDescription);
 
-  searchCityInput.value = "";
+  searchInput.value = "";
 });
 
 function getCurrentCityWeather(response) {
   document.querySelector("#city").innerHTML = response.data.name;
-  document.querySelector("#city-temperature").innerHTML = Math.round(
+  document.querySelector("#temperature").innerHTML = Math.round(
     response.data.main.temp
   );
-
+  document.querySelector("#weather-description").innerHTML =
+    response.data.weather[0].description;
+  // TODO
   // document.querySelector("#humidity").innerHTML = response.data.main.humidity;
   // document.querySelector("#wind").innerHTML = Math.round(
   //   response.data.wind.speed
   // );
-  document.querySelector("#description").innerHTML =
-    response.data.weather[0].main;
 }
 
 function retrievePosition(position) {
@@ -71,23 +72,25 @@ function getCurrentLocation(event) {
   navigator.geolocation.getCurrentPosition(retrievePosition);
 }
 
-let currentCity = document.querySelector("#current-city");
-currentCity.addEventListener("click", getCurrentLocation);
+let currentLocation = document.querySelector("#current-location");
+currentLocation.addEventListener("click", getCurrentLocation);
 
-// 🙀Bonus Feature
-// Display a fake temperature (i.e 17) in Celsius and add a link to convert it to Fahrenheit.
-// When clicking on it, it should convert the temperature to Fahrenheit.
-// When clicking on Celsius, it should convert it back to Celsius.
+// TODO
 
-// let celsius = document.querySelector("#celsius-link");
-// let fahrenheit = document.querySelector("#fahrenheit-link");
+// let celciusTemperature = null;
 
+// let celsius = document.querySelector("#celsius");
 // celsius.addEventListener("click", function (event) {
-//   let cityTemperature = document.querySelector("#city-temperature");
-//   cityTemperature.innerHTML = "30";
+//   let cityTemperature = document.querySelector("#temperature");
+//   cityTemperature.innerHTML = celciusTemperature;
 // });
+// function toCelsius(fahrenheit) {
+//   return (5 / 9) * (fahrenheit - 32);
+// }
 
+// let fahrenheit = document.querySelector("#fahrenheit");
 // fahrenheit.addEventListener("click", function (event) {
-//   let cityTemperature = document.querySelector("#city-temperature");
-//   cityTemperature.innerHTML = "86";
+//   let cityTemperature = document.querySelector("#temperature");
+//   let fahrenheitTemperature = (celciusTemperature * 9) / 5 + 32;
+//   cityTemperature.innerHTML = Math.round(fahrenheitTemperature);
 // });
