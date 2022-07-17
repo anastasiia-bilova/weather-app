@@ -35,7 +35,7 @@
 
       <div class="container h-100">
         <div
-          class="row g-xl-0 g-lg-0 g-md-0 mt-xl-4 mt-lg-3 mt-md-3 mt-sm-3 mt-2 mx-0"
+          class="row g-xl-0 g-lg-0 g-md-0 mt-xl-4 mt-lg-3 mt-md-3 mt-sm-3 mt-3 mx-0"
         >
           <div
             class="col-xl-6 offset-xl-3 col-lg-8 offset-lg-2 col-md-8 offset-md-2 col-sm-12 col-xs-12"
@@ -45,7 +45,7 @@
               <input
                 type="text"
                 class="form-control input-keyword"
-                id="search-input"
+                id="city-input"
                 placeholder="Search for location"
                 aria-label="Recipient's username with two button addons"
               />
@@ -72,7 +72,7 @@
                 </svg>
               </button>
             </form>
-            <div class="cities-list">
+            <div class="list-of-cities" id="list-of-cities">
               <a href="#" class="city-link" id="popular-city">Lisbon</a>
               <a href="#" class="city-link" id="popular-city">Barcelona</a>
               <a href="#" class="city-link" id="popular-city">Paris</a>
@@ -83,36 +83,46 @@
         </div>
         <div class="d-flex flex-column text-center align-items-center">
           <div class="w-100 text-white">
-            <p class="lead mb-0" id="current-time"></p>
+            <p class="lead mb-0" id="date"></p>
             <h1 class="display-1 mb-0" id="city">Salzburg</h1>
             <h1 class="display-6 mt-0 mb-0" id="country">Austria</h1>
           </div>
-          <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-            <div class="align-items-top g-2 p-2 row">
-              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                <span class="weather-icon">⛅</span>
-                <p class="text-white mb-0" id="weather-description">
-                  Partly Cloudy
-                </p>
+          <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 col-xs-12">
+            <div class="align-items-center g-2 p-2 row row-cols">
+              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                <img src="" alt="Clear" id="icon" class="float-left" />
+                <!-- <span class="icon">⛅</span> -->
+                <p class="text-white mb-0" id="description">Partly Cloudy</p>
               </div>
-              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
                 <div class="float-left">
                   <span class="temperature text-white" id="temperature"
                     >20</span
                   >
                   <span class="units">
-                    <a href="#" class="text-white" id="celsius">°C</a>
+                    <a href="#" class="active text-white" id="celsius-link"
+                      >°C</a
+                    >
                     <span class="text-white">|</span>
-                    <a href="#" class="text-white" id="fahrenheit">°F</a>
+                    <a href="#" class="text-white" id="fahrenheit-link">°F</a>
                   </span>
                 </div>
                 <div class="float-left">
-                  <p class="text-white">
+                  <p class="text-white mb-0">
                     H:<span id="max-temperature">22</span> L:<span
                       id="min-temperature"
                       >18</span
                     >
                   </p>
+                </div>
+              </div>
+              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                <div class="float-left">
+                  <ul>
+                    <li>Humidity: <span id="humidity"></span>%</li>
+                    <li>Wind: <span id="wind"></span> km/h</li>
+                    <li>Visibility: <span id="visibility"></span> km</li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -167,16 +177,17 @@
             </div>
           </div>
         </div>
-        <div class="footer text-white text-center">
+        <small class="footer text-white text-center">
           <p>
             <a
               href="https://github.com/anastasiia-bilova/weather-app"
               target="_blank"
               class="signature-link"
               >Open-source code</a
-            >, by Anastasiia Bilova
+            >
+            by Anastasiia Bilova
           </p>
-        </div>
+        </small>
       </div>
     </section>
     <script src="src/app.js"></script>
