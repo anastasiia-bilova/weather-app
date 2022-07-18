@@ -107,14 +107,12 @@
                     <a href="#" class="text-white" id="fahrenheit-link">°F</a>
                   </span>
                 </div>
-                <div class="float-left">
-                  <p class="text-white mb-0">
-                    H:<span id="max-temperature">22</span> L:<span
-                      id="min-temperature"
-                      >18</span
-                    >
-                  </p>
-                </div>
+                <p class="text-white mb-0">
+                  Max: <span id="max-temperature"></span>°
+                </p>
+                <p class="text-white mb-0">
+                  Min: <span id="min-temperature"></span>°
+                </p>
               </div>
               <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
                 <div class="float-left">
@@ -128,55 +126,7 @@
             </div>
           </div>
         </div>
-        <div class="g-1 g-xl-3 g-lg-3 g-md-2 g-sm-2 mt-3 row row-cols-5">
-          <div
-            class="col-xl-2 offset-xl-1 col-lg-2 offset-lg-1 col-md-2 offset-md-1 col-sm-2 offset-sm-1 col-xs-0"
-          >
-            <div class="card text-center text-white">
-              <div class="card-body">
-                <h6 class="card-title day">Tue</h6>
-                <span class="forecast-icon">☀️</span>
-                <p class="card-text">22°</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xs-1">
-            <div class="card text-center text-white">
-              <div class="card-body">
-                <h6 class="card-title day">Wed</h6>
-                <span class="forecast-icon">🌧️</span>
-                <p class="card-text">18°</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xs-1">
-            <div class="card text-center text-white">
-              <div class="card-body">
-                <h6 class="card-title day">Thu</h6>
-                <span class="forecast-icon">☀️</span>
-                <p class="card-text">25°</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xs-1">
-            <div class="card text-center text-white">
-              <div class="card-body">
-                <h6 class="card-title day">Fri</h6>
-                <span class="forecast-icon">🌤️</span>
-                <p class="card-text">22°</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xs-1">
-            <div class="card text-center text-white">
-              <div class="card-body">
-                <h6 class="card-title day">Sat</h6>
-                <span class="forecast-icon">🌧️</span>
-                <p class="card-text">19°</p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div class="weather-forecast" id="forecast"></div>
         <small class="footer text-white text-center">
           <p>
             <a

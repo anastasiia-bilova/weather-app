@@ -7,6 +7,7 @@
 }
 
 body {
+  color: #fff;
   font-family: "SF Pro Text", "SF Pro Icons", Segoe UI, SegoeUI,
     "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
@@ -143,13 +144,6 @@ li {
   text-decoration: underline;
 }
 
-/* .input-icons i {
-  position: absolute;
-  top: 30px;
-  left: 15px;
-  color: #fff;
-} */
-
 .temperature {
   font-size: 56px;
   font-weight: 200;
@@ -192,15 +186,19 @@ li {
 }
 
 .d-flex {
-  margin-top: 100px !important;
+  margin-top: 90px !important;
 }
 
-.day {
+.forecast-date {
   filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.6));
 }
 
 .forecast-icon {
-  font-size: 25px;
+  width: 50px;
+}
+
+.forecast-temperature-min {
+  opacity: 0.8;
 }
 
 .signature-link {
