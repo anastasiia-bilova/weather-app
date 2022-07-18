@@ -12,6 +12,8 @@ let daysExtended = [
 
 let daysShort = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
+let cities = ["Kyiv", "Lisbon", "Barcelona", "Paris", "London", "Tokyo"];
+
 function formatDate(timestamp) {
   let date = new Date(timestamp * 1000);
   let hours = date.getHours();
@@ -157,11 +159,26 @@ fahrenheitLink.addEventListener("click", function (event) {
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 });
 
-let listOfCities = document.querySelector("#list-of-cities");
-listOfCities.addEventListener("click", function (event) {
-  event.preventDefault();
-  let popularCityElement = document.querySelector("#popular-city");
-  search(popularCityElement.innerHTML);
-});
+function displayCities() {
+  let citiesElements = document.querySelector("#list-of-cities");
+  let citiesHTML = ``;
+
+  cities.forEach(function (city) {
+    citiesHTML += `<a href="#" id="${city.toLowerCase()}">${city}</a>`;
+  });
+  citiesElements.innerHTML = citiesHTML;
+
+  let listOfCitiesElements = document.querySelectorAll("#list-of-cities a");
+
+  for (let cityItem of listOfCitiesElements) {
+    console.log(cityItem.innerHTML);
+    cityItem.addEventListener("click", function (event) {
+      event.preventDefault();
+      search(cityItem.innerHTML);
+    });
+  }
+}
+
+displayCities();
 
 search("Salzburg");
